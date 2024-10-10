@@ -220,7 +220,7 @@ int main() {
     // verify total number of clauses matches. this is jank but i think it might work for now
     int totalClausesAfterSplit = firstHalfClauses.size() + secondHalfClauses.size() + crossClauses.size();
     cout << "Total clauses after splitting: " << totalClausesAfterSplit << endl;
-    cout << "Verification that total clauses match: " << (totalClausesAfterSplit == problem.size() ? "Yes" : "No") <<
+    cout << "Verification that total clauses match: " << (totalClausesAfterSplit == static_cast<int>( problem.size() ) ? "Yes" : "No") <<
             endl;
 
     // solve first half
