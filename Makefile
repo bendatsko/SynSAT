@@ -1,32 +1,11 @@
-# Compiler
-CXX = g++
+all: sat_app.o SAT.o
+	g++ -o sat sat_app.o SAT.o
 
-# Compiler flags
-CXXFLAGS = -Wall -Wextra -std=c++11
+sat_app.o: sat_app.cpp SAT.h
+	g++ -c sat_app.cpp
 
-# Target executable
-TARGET = synsat
+SAT.o: SAT.cpp SAT.h
+	g++ -c SAT.cpp
 
-# Source files
-SRCS = main.cpp
-
-# Object files
-OBJS = $(SRCS:.cpp=.o)
-
-# Default rule to compile and link the program
-all: $(TARGET)
-
-# Rule to link the executable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-
-# Rule to compile .cpp files to .o files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Clean rule to remove generated files
 clean:
-	rm -f $(OBJS) $(TARGET)
-
-# Phony targets (not actual files)
-.PHONY: all clean
+	rm -f *.o sat
